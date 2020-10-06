@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     public CharacterController2D controller;
     public Animator animator;
     public Rigidbody2D rb;
+	public Transform cam;
     
 	public float runSpeed = 40f;
 
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	bool crouch = false;
 
 	bool hasChosen1 = false;
-
+	
 	// Update is called once per frame
 	void Update ()
 	{	
@@ -58,7 +59,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (!CutSceneManager.isCutscene) {
-            // Move our character
+            cam.position = new Vector3(GetComponent<Transform>().position.x, 0,-10);
+			// Move our character
             controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
             jump = false;
         }
