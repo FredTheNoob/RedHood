@@ -14,7 +14,8 @@ public class CutSceneManager : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
             if (!ranTestCutscene && this.tag == "Cutscene1") {
-                //FindObjectOfType<AudioManager>().Play()
+                FindObjectOfType<AudioManager>().Stop("background-tut");
+                FindObjectOfType<AudioManager>().Play("stinger1");
                 Debug.Log(("TEST 1"));
                 ranTestCutscene = true;
                 isCutscene = true;

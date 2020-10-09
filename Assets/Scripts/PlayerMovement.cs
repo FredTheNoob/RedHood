@@ -18,7 +18,24 @@ public class PlayerMovement : MonoBehaviour {
 	bool crouch = false;
 
 	bool hasChosen1 = false;
-	
+
+	Transform playerPos;
+
+	public static bool startBackgroundSound = true;
+
+	private void Start() {
+		playerPos = GetComponent<Transform>();
+
+		if (startBackgroundSound) {
+			FindObjectOfType<AudioManager>().Play("background-tut");
+		}
+
+		if (CabinEnter.justExited) {
+			FindObjectOfType<AudioManager>().Play("background-tut");
+			playerPos.position = new Vector3(253, 0,0);
+		}
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{	
@@ -60,6 +77,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		if (!CutSceneManager.isCutscene) {
             cam.position = new Vector3(GetComponent<Transform>().position.x, 0,-10);
+			
 			// Move our character
             controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
             jump = false;
