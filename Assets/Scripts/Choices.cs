@@ -2,22 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Choices : MonoBehaviour {
     public GameObject title;
     public GameObject underTitle;
     public GameObject Choice1;
     public GameObject Choice2;
+    public GameObject deathText;
+    public GameObject deathChoice;
 
     public void ChoiceOption1() {
         disableHunterUI();
-        Debug.Log("Option 1 - fuck warmup.zone");
         Time.timeScale = 1;
     }
 
     public void ChoiceOption2() {
         disableHunterUI();
-        Debug.Log("Option 2 - warmup.zone er godt");
+        Time.timeScale = 1;
+    }
+    
+    public void deathChoiceRestart() {
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        deathText.SetActive(false);
+        deathChoice.SetActive(false);
         Time.timeScale = 1;
     }
 
