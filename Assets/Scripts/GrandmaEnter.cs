@@ -10,11 +10,12 @@ public class GrandmaEnter : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.tag == "Player" && SceneManager.GetActiveScene().name == "Level_1") {
             grandmaToggle.SetActive(true);
-            
+
             if (Input.GetKey(KeyCode.E)) {
+                PlayerMovement.startBackgroundSound = false;
                 FindObjectOfType<AudioManager>().Stop("background-tut");
                 FindObjectOfType<AudioManager>().Play("doorOpen");
-                SceneManager.LoadScene("Level_2");
+                SceneManager.LoadScene("Level_2", LoadSceneMode.Single);
             }
         }
     }

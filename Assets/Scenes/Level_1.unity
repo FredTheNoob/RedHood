@@ -2175,6 +2175,13 @@ MonoBehaviour:
     spatialBlend: 0
     source: {fileID: 0}
     loop: 0
+  - name: backgroundMusic
+    clip: {fileID: 8300000, guid: 41812c02a2273d345a7f800bc1a3d34f, type: 3}
+    volume: 0.827
+    pitch: 1
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 1
 --- !u!4 &453795941
 Transform:
   m_ObjectHideFlags: 0

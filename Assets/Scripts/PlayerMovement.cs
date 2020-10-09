@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 			FindObjectOfType<AudioManager>().Play("background-tut");
 		}
 
-		if (CabinEnter.justExited) {
+		if (CabinEnter.justExited && SceneManager.GetActiveScene().name == "Level_1") {
 			FindObjectOfType<AudioManager>().Play("background-tut");
 			playerPos.position = new Vector3(253, 0,0);
 		}
