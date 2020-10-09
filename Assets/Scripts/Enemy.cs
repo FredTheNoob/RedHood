@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    
     public Transform playerPos;
     public GameObject player;
     public Rigidbody2D rb;
 
     public Transform tpPosition;
+    public GameObject deathText;
+    public GameObject deathChoice;
+
     public float speed = 10f;
     public float maxSpeed = 5f;
     public float jumpForce = 10f;
@@ -59,6 +63,14 @@ public class Enemy : MonoBehaviour {
         if (hit.gameObject.CompareTag("Ground") || hit.gameObject.CompareTag("Obstacle")) {
             // We are no longer in air
             isJumping = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D hit) {
+        if (hit.gameObject.tag == "Player") {
+            Time.timeScale = 0;
+            deathText.SetActive(true);
+            deathChoice.SetActive(true);
         }
     }
 }
